@@ -1,0 +1,99 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+                    xmlns:xpf="clr-namespace:DevExpress.Xpf.NavBar.Platform;assembly=DevExpress.Xpf.NavBar.v12.2"
+                    xmlns:dxnt="http://schemas.devexpress.com/winfx/2008/xaml/navbar/themekeys"
+                    xmlns:dxcn="clr-namespace:DevExpress.Xpf.Core.Native;assembly=DevExpress.Xpf.Core.v12.2"
+                    xmlns:dxs="clr-namespace:DXSample">
+    
+    <dxn:ScrollUpCommandProvider x:Key="ScrollUpCommandProvider" />
+    <dxn:ScrollDownCommandProvider x:Key="ScrollDownCommandProvider" />
+    
+    <dxn:ScrollUpCommandProvider x:Key="ScrollRightCommandProvider" />
+    <dxn:ScrollDownCommandProvider x:Key="ScrollLeftCommandProvider" />
+
+    <dxs:OrientationInverter x:Key="orientationInverter" />
+    
+    <ControlTemplate x:Key="{dxnt:CommonElementsThemeKey ResourceKey=ScrollableContentControlTemplate}" TargetType="dxn:ScrollableContentControl">
+        <xpf:XPFDockPanel LastChildFill="True">
+            <dxn:NavBarRepeatButton x:Name="Up"
+                                    Interval="100" xpf:XPFDockPanel.Dock="Top"
+                                    Focusable="{Binding Path=NavBar.View.Focusable}"
+                                    Orientation="{Binding Path=NavBar.View.Orientation}"
+                                    ClickMode="{Binding Path=NavBar.View.(dxn:ScrollingSettings.ClickMode)}"
+                                    dxcn:RoutedCommandHelper.Command="{StaticResource ScrollUpCommandProvider}"
+                                    dxcn:RoutedCommandHelper.CommandTarget="{Binding ElementName=Scroller}"
+                                    Template="{Binding Path=ButtonUpTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+            <dxn:NavBarRepeatButton x:Name="Down"
+                                    Interval="100" xpf:XPFDockPanel.Dock="Bottom"
+                                    Focusable="{Binding Path=NavBar.View.Focusable}"
+                                    Orientation="{Binding Path=NavBar.View.Orientation}"
+                                    ClickMode="{Binding Path=NavBar.View.(dxn:ScrollingSettings.ClickMode)}"
+                                    dxcn:RoutedCommandHelper.Command="{StaticResource ScrollDownCommandProvider}"
+                                    dxcn:RoutedCommandHelper.CommandTarget="{Binding ElementName=Scroller}"
+                                    Template="{Binding Path=ButtonDownTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+
+            <dxn:NavBarRepeatButton x:Name="Right"
+                                    Interval="100" xpf:XPFDockPanel.Dock="Right"
+                                    Focusable="{Binding Path=NavBar.View.Focusable}"
+                                    Orientation="{Binding Path=NavBar.View.Orientation, Converter={StaticResource orientationInverter}}"
+                                    ClickMode="{Binding Path=NavBar.View.(dxn:ScrollingSettings.ClickMode)}"
+                                    dxcn:RoutedCommandHelper.Command="{StaticResource ScrollLeftCommandProvider}"
+                                    dxcn:RoutedCommandHelper.CommandTarget="{Binding ElementName=HorizontalScroller}"
+                                    Template="{Binding Path=ButtonDownTemplate, RelativeSource={RelativeSource TemplatedParent}}">
+                <dxn:NavBarRepeatButton.LayoutTransform>
+                    <RotateTransform Angle="-90"/>
+                </dxn:NavBarRepeatButton.LayoutTransform>
+            </dxn:NavBarRepeatButton>
+            <dxn:NavBarRepeatButton x:Name="Left"
+                                    Interval="100" xpf:XPFDockPanel.Dock="Left"
+                                    Focusable="{Binding Path=NavBar.View.Focusable}"
+                                    Orientation="{Binding Path=NavBar.View.Orientation, Converter={StaticResource orientationInverter}}"
+                                    ClickMode="{Binding Path=NavBar.View.(dxn:ScrollingSettings.ClickMode)}"
+                                    dxcn:RoutedCommandHelper.Command="{StaticResource ScrollRightCommandProvider}"
+                                    dxcn:RoutedCommandHelper.CommandTarget="{Binding ElementName=HorizontalScroller}"
+                                    Template="{Binding Path=ButtonUpTemplate, RelativeSource={RelativeSource TemplatedParent}}">
+                <dxn:NavBarRepeatButton.LayoutTransform>
+                    <RotateTransform Angle="-90"/>
+                </dxn:NavBarRepeatButton.LayoutTransform>
+            </dxn:NavBarRepeatButton>
+            
+            <dxn:NavBarSmoothScroller x:Name="Scroller"
+                                      xpf:XPFDockPanel.Dock="Top"
+                                      Orientation="{Binding Path=Orientation, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ScrollSpeed="{Binding Path=NavBar.View.(dxn:ScrollingSettings.ScrollSpeed)}"
+                                      ButtonUp="{Binding ElementName=Up}"
+                                      ButtonDown="{Binding ElementName=Down}">
+                <dxn:NavBarSmoothScroller.IsManipulationEnabled>
+                    <Binding Path="NavBar.View.IsManipulationEnabled" />
+                </dxn:NavBarSmoothScroller.IsManipulationEnabled>
+                <dxn:NavBarSmoothScroller.Acceleration>
+                    <Binding Path="NavBar.View.(dxn:ScrollingSettings.AccelerationRatio)" />
+                </dxn:NavBarSmoothScroller.Acceleration>
+                <dxn:NavBarSmoothScroller.Deceleration>
+                    <Binding Path="NavBar.View.(dxn:ScrollingSettings.DecelerationRatio)" />
+                </dxn:NavBarSmoothScroller.Deceleration>
+
+                <dxn:NavBarSmoothScroller x:Name="HorizontalScroller"
+                                    xpf:XPFDockPanel.Dock="Left"
+                                    Orientation="{Binding Path=Orientation, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource orientationInverter}}"
+                                    ScrollSpeed="{Binding Path=NavBar.View.(dxn:ScrollingSettings.ScrollSpeed)}"
+                                    ButtonUp="{Binding ElementName=Left}"
+                                    ButtonDown="{Binding ElementName=Right}">
+                    <dxn:NavBarSmoothScroller.IsManipulationEnabled>
+                        <Binding Path="NavBar.View.IsManipulationEnabled" />
+                    </dxn:NavBarSmoothScroller.IsManipulationEnabled>
+                    <dxn:NavBarSmoothScroller.Acceleration>
+                        <Binding Path="NavBar.View.(dxn:ScrollingSettings.AccelerationRatio)" />
+                    </dxn:NavBarSmoothScroller.Acceleration>
+                    <dxn:NavBarSmoothScroller.Deceleration>
+                        <Binding Path="NavBar.View.(dxn:ScrollingSettings.DecelerationRatio)" />
+                    </dxn:NavBarSmoothScroller.Deceleration>
+                    <ContentPresenter x:Name="contentPresenter" />
+                </dxn:NavBarSmoothScroller>
+                
+            </dxn:NavBarSmoothScroller>
+        </xpf:XPFDockPanel>
+    </ControlTemplate>
+    
+</ResourceDictionary>
