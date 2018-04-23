@@ -1,0 +1,40 @@
+﻿<Window x:Class="NavigationScrolling.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+        Title="MainWindow" Height="272" Width="356">
+    <dxn:NavBarControl Margin="10" HorizontalAlignment="Stretch">
+        <dxn:NavBarControl.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="ScrollerResources.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </dxn:NavBarControl.Resources>
+        <dxn:NavBarControl.View>
+            <dxn:NavigationPaneView/>
+        </dxn:NavBarControl.View>
+        <dxn:NavBarControl.Groups>
+            <dxn:NavBarGroup Header="navBarGroup1" DisplaySource="Content">
+                <dxn:NavBarGroup.Content>
+                    <StackPanel Orientation="Vertical" Width="500">
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="0  Very very long useless text  0"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="1  Very very long useless text  1"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="2  Very very long useless text  2"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="3  Very very long useless text  3"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="4  Very very long useless text  4"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="5  Very very long useless text  5"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="6  Very very long useless text  6"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="7  Very very long useless text  7"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="8  Very very long useless text  8"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="9  Very very long useless text  9"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="10 Very very long useless text 10"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="11 Very very long useless text 11"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="12 Very very long useless text 12"/>
+                        <Button HorizontalAlignment="Stretch" Height="30" Content="13 Very very long useless text 13"/>
+                    </StackPanel>
+                </dxn:NavBarGroup.Content>
+            </dxn:NavBarGroup>
+        </dxn:NavBarControl.Groups>
+    </dxn:NavBarControl>
+</Window>
