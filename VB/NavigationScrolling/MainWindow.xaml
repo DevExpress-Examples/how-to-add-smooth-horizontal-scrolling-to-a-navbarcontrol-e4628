@@ -1,4 +1,4 @@
-﻿<Window x:Class="NavigationScrolling.MainWindow"
+<Window x:Class="NavigationScrolling.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
