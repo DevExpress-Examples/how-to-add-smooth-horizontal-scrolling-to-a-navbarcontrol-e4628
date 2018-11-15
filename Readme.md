@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Converters.cs](./CS/NavigationScrolling/Converters.cs) (VB: [Converters.vb](./VB/NavigationScrolling/Converters.vb))
+* **[MainWindow.xaml](./CS/NavigationScrolling/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/NavigationScrolling/MainWindow.xaml))**
+* [MainWindow.xaml.cs](./CS/NavigationScrolling/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/NavigationScrolling/MainWindow.xaml))
+* [ScrollerResources.xaml](./CS/NavigationScrolling/ScrollerResources.xaml) (VB: [ScrollerResources.xaml](./VB/NavigationScrolling/ScrollerResources.xaml))
+<!-- default file list end -->
 # How to add smooth horizontal scrolling to a NavBarControl
 
 
